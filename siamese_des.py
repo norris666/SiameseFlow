@@ -3,10 +3,11 @@
 Created on 2018年7月16日
 @author: dapinglee&yangxiaodong
 """
-from generatePatches import *
 import sys
-sys.path.insert(0, '/usr/local/caffe-master/python')
 import caffe
+import numpy as np
+sys.path.insert(0, '/usr/local/caffe-master/python')
+
 
 
 def siamese_des(img1, img2):

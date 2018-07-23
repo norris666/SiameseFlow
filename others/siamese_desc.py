@@ -1,20 +1,16 @@
-from generatePatches import *
+from others.generatePatches import *
 import sys
 sys.path.insert(0, '/usr/local/caffe-master/python')
 import caffe
 #caffe('set_device',1)
 
-import matplotlib.pyplot as plt
-from caffe.proto import caffe_pb2
-from caffe.io import*
-from PIL import Image
-import cv2
-
 
 def siamese_des(from generatePatches import *
 import sys
 sys.path.insert(0, '/usr/local/caffe-master/python')
-import caffe):
+    pass
+
+):
     patchesFix,patchesMov = generate_patches(fixedImg,movingImg,fixedPoint,movingPoint)
 
     MODEL_FILE = '/home/yangxiaodong/caffe/matchnet/models/matchnet.prototxt'
