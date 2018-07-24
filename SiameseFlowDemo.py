@@ -15,8 +15,8 @@ from siamese_feat import feat2rgb
 # start time
 start = time.time()
 # read image
-img1 = cv2.imread("./source/MR.bmp")  # fixedImg p.s. -1 to read 8-bit image
-img2 = cv2.imread("./source/CT_rotate.bmp")  # movingImg
+img1 = cv2.imread("source/MR.bmp")  # fixedImg p.s. -1 to read 8-bit image
+img2 = cv2.imread("source/CT_rotate.bmp")  # movingImg
 
 # rgb2gray  p.s. do it while the image is not 8-bit
 img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
