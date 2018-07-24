@@ -11,6 +11,9 @@
 
 load raw.mat
 
+feature1 = single(feature1);
+feature2 = single(feature2);
+
 % SIFT-flow parameters
 SIFTflowpara.alpha=2;
 SIFTflowpara.d=100;
