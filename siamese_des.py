@@ -1,13 +1,13 @@
 # coding:UTF-8
 """
-Created on 2018年7月16日
-@author: dapinglee&yangxiaodong
+Created on July 16,2018
+@author: dapinglee & yangxiaodong
+@university: CUIT
 """
 import sys
 import caffe
 import numpy as np
-sys.path.insert(0, '/usr/local/caffe-master/python')
-
+sys.path.insert(1, '/usr/local/caffe-master/python')
 
 
 def siamese_des(img1, img2):

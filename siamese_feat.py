@@ -1,7 +1,8 @@
 # coding:UTF-8
 """
-Created on 2018年7月22日
-@author: dapinglee
+Created on July 22,2018
+@author: DapingLee
+@university: CUIT
 """
 import numpy as np
 from sklearn.decomposition import PCA

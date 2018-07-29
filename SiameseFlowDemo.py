@@ -1,7 +1,8 @@
 # coding:UTF-8
 """
-Created on 2018年7月20日
-@author: dapinglee
+Created on July 20,2018
+@author: DapingLee
+@university: CUIT
 """
 import cv2
 import time
@@ -11,12 +12,13 @@ import SimpleITK as sitk
 
 from siamese_des import siamese_des
 from siamese_feat import feat2rgb
+from joint_images import joint
 
 # start time
 start = time.time()
 # read image
-img1 = cv2.imread('source/MR.bmp')  # fixedImg p.s. -1 to read 8-bit image
-img2 = cv2.imread('source/CT_rotate.bmp')  # movingImg
+img1 = cv2.imread('source/fixed729.bmp')  # fixedImg p.s. -1 to read 8-bit image
+img2 = cv2.imread('source/moving729.bmp')  # movingImg
 
 # rgb2gray  p.s. do it while the image is not 8-bit
 img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
@@ -59,33 +61,16 @@ rgberror = sitk.GetArrayFromImage(rgberror)
 elapsed = time.time() - start
 print('Time used: {:.0f}m {:.0f}s'.format(elapsed // 60, elapsed % 60))
 
+# joint results
+images = {'fixed': img1, 'moving': img2, 'flow': siamese_flow_rgb,
+          'warped': warpI2, 'gray': grayerror, 'rgb': rgberror,
+          'feat1': feature1_rgb, 'feat2': feature2_rgb}
+image = joint(images)
+
 # show the results
-cv2.imshow('Fixed Image', img1)
-cv2.imshow('Moving Image', img2)
-
-cv2.imshow('Siamese Feature Image1', feature1_rgb)
-cv2.imshow('Siamese Feature Image2', feature2_rgb)
-
-cv2.imshow('Warped Image', warpI2)
-cv2.imshow('Gray Error', grayerror)
-cv2.imshow('RGB Error', rgberror)
-
-cv2.imshow('Siamese Flow Image', siamese_flow_rgb)
-
+cv2.imshow('results', image)
 k = cv2.waitKey(0)  # wait for ESC key to exit
 if k == 27:
     cv2.destroyAllWindows()
 elif k == ord('s'):  # wait fos 's' key to save and exit
-    cv2.imwrite('results/Fixed Image.png', img1)
-    cv2.imwrite('results/Moving Image.png', img2)
-
-    cv2.imwrite('results/Siamese Feature Image1.png', feature1_rgb)
-    cv2.imwrite('results/Siamese Feature Image2.png', feature2_rgb)
-
-    cv2.imwrite('results/Warped Image.png', warpI2)
-    cv2.imwrite('results/Gray Error.png', grayerror)
-    cv2.imwrite('results/RGB Error.png', rgberror)
-
-    cv2.imwrite('results/Siamese Flow Image.png', siamese_flow_rgb)
-
-    cv2.destroyAllWindows()
+    cv2.imwrite('results/results.bmp', image)
