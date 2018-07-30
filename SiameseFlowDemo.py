@@ -17,8 +17,8 @@ from joint_images import joint
 # start time
 start = time.time()
 # read image
-img1 = cv2.imread('source/fixed729.bmp')  # fixedImg p.s. -1 to read 8-bit image
-img2 = cv2.imread('source/moving729.bmp')  # movingImg
+img1 = cv2.imread('source/fixed1.jpg')  # fixedImg p.s. -1 to read 8-bit image
+img2 = cv2.imread('source/moving.jpg')  # movingImg
 
 # rgb2gray  p.s. do it while the image is not 8-bit
 img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)

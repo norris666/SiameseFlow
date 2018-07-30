@@ -26,6 +26,7 @@ def joint(images):
     height = fixed.shape[0]
     width = fixed.shape[1]
 
+    # padding and insert images
     image = np.zeros((height*2+40, width*4+6, 3), dtype='uint8')
     image[:] = (255, 255, 255)
     image[20:height+20, 0:width, :] = fixed
@@ -37,14 +38,16 @@ def joint(images):
     image[20:height+20, width*3+6:width*4+6, :] = feat1
     image[height+40:height*2+40, width*3+6:width*4+6, :] = feat2
 
+    # add text
     font = cv2.FONT_HERSHEY_COMPLEX_SMALL
-    image = cv2.putText(image, 'Fixed Image', (0, 14), font, 1, (0, 0, 255), 1)
-    image = cv2.putText(image, 'Moving Image', (0, 34+height), font, 1, (0, 0, 255), 1)
-    image = cv2.putText(image, 'Flow Image', (width+2, 14), font, 1, (0, 0, 255), 1)
-    image = cv2.putText(image, 'Warped Image', (width+2, 34+height), font, 1, (0, 0, 255), 1)
+    image = cv2.putText(image, 'Fixed IMG', (0, 14), font, 1, (0, 0, 255), 1)
+    image = cv2.putText(image, 'Moving IMG', (0, 34+height), font, 1, (0, 0, 255), 1)
+    image = cv2.putText(image, 'Flow IMG', (width+2, 14), font, 1, (0, 0, 255), 1)
+    image = cv2.putText(image, 'Warped IMG', (width+2, 34+height), font, 1, (0, 0, 255), 1)
     image = cv2.putText(image, 'Gray Error', (width*2+4, 14), font, 1, (0, 0, 255), 1)
     image = cv2.putText(image, 'RGB Error', (width*2+4, 34+height), font, 1, (0, 0, 255), 1)
-    image = cv2.putText(image, 'Feature1 Image', (width*3+6, 14), font, 1, (0, 0, 255), 1)
-    image = cv2.putText(image, 'Feature2 Image', (width*3+6, 34+height), font, 1, (0, 0, 255), 1)
+    image = cv2.putText(image, 'Feat1 IMG', (width*3+6, 14), font, 1, (0, 0, 255), 1)
+    image = cv2.putText(image, 'Feat2 IMG', (width*3+6, 34+height), font, 1, (0, 0, 255), 1)
 
     return image
+
